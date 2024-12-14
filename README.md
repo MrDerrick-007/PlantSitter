@@ -23,9 +23,8 @@
   <h3 align="center">PlantSitter Project<3</h3>
 
   <p align="center">
-    A project for automate the management of your beautiful plants
+    A project for automate the management of your beautiful plants based with ESP32 :smile:
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
@@ -69,22 +68,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+The idea for this project stems from a personal need: to automatically manage (in the cheapest way) the plants I have at home during the summer when no one is available to take care of them. The goal behind this project is to remotely monitor the condition of the plants and ensure they are watered when needed. It will be possible to track various data, such as soil moisture and room temperature. When the system detects low soil moisture, a pump will be activated to water the target plant. 
 
 ### Built With
 
@@ -106,26 +90,20 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
+Instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### Prerequisites HW
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+For the project you need:  
+##add list of components--------------
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+For installing and setting up your app you have to follow this steps:
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
+1. Get Arduine IDE 2 at [https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing/](https://example.com)
+2. Install ESP32 board on the IDE following this guide [https://randomnerdtutorials.com/installing-esp32-arduino-ide-2-0/](https://example.com)
 3. Install NPM packages
    ```sh
    npm install
