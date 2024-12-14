@@ -104,23 +104,12 @@ For installing and setting up your app you have to follow this steps:
 
 1. Get Arduine IDE 2 at [https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing/](https://example.com)
 2. Install ESP32 board on the IDE following this guide [https://randomnerdtutorials.com/installing-esp32-arduino-ide-2-0/](https://example.com)
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin github_username/repo_name
-   git remote -v # confirm the changes
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+3. Install Filesystem Uploader Plugin [https://randomnerdtutorials.com/arduino-ide-2-install-esp32-littlefs/](https://example.com)
+4. To build the asynchronous web server, you need to install the following libraries:
+   * https://github.com/me-no-dev/ESPAsyncWebServer
+   * https://github.com/me-no-dev/AsyncTCP
+5. To build the web server you need two different files. The Arduino sketch and the HTML file. The HTML file should be saved inside a folder called data inside the Arduino sketch folder, as shown below:
+<img style="float: right;" src="https://github.com/user-attachments/assets/c0e31e9c-0404-4302-865e-1666f52bc7b0">
 
 <!-- USAGE EXAMPLES -->
 ## Usage
