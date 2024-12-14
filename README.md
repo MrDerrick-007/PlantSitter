@@ -16,15 +16,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/othneildrew/logo">
+    <img src="test.jpg" alt="Logo" width="100" height="100">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">PlantSitter Project<3</h3>
 
-![test](https://github.com/user-attachments/assets/fc5ea679-7a53-4ffc-bc7d-4c335e586d85)
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A project for automate the management of your beautiful plants
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
