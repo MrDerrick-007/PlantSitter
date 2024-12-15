@@ -205,7 +205,7 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/MrDerrick-007/PlantSitter.svg?style=for-the-badge
 [contributors-url]: https://github.com/MrDerrick-007/PlantSitter//graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/MrDerrick-007/PlantSitter/.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/MrDerrick-007/PlantSitter.svg?style=for-the-badge
 [forks-url]: https://github.com/MrDerrick-007/PlantSitter/network/members
 [stars-shield]: https://img.shields.io/github/stars/MrDerrick-007/PlantSitter.svg?style=for-the-badge
 [stars-url]: https://github.com/MrDerrick-007/PlantSitter/stargazers
