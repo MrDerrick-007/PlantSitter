@@ -125,13 +125,15 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+- [x] Buy all the components
+- [x] Test a basic version of the server v1
+- [ ] Improve UI🌟
+- [ ] Test a basic versione of the system without water irrigation (winter version)🥶
+- [ ] Create an STL file for the hardware support🍅
+- [ ] Create the summer version with the water pump 
+- [ ] Remote check of the light
+- [ ] Remote check of the water level for the irrigation
+- [ ] Remote check of the room condition (temperature, air humidity, air quality)
 
 See the [open issues](https://github.com/MrDerrick-007/PlantSitter//issues) for a full list of proposed features (and known issues).
 
