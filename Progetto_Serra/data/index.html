@@ -24,14 +24,41 @@ copies or substantial portions of the Software. -->
 </head>
 <body>
   <h2>Derrick Plants Station</h2>
+  <!-- Riquadri con i valori -->
+  <div style="display: flex; justify-content: space-around; margin: 20px;">
+    <div style="text-align: center; border: 2px solid #059e8a; padding: 10px; width: 30%; border-radius: 10px;">
+      <h3>Temperature</h3>
+      <p id="temperature-box" style="font-size: 2rem; color: #059e8a;">--</p>
+    </div>
+    <div style="text-align: center; border: 2px solid #1c87c9; padding: 10px; width: 30%; border-radius: 10px;">
+      <h3>Humidity</h3>
+      <p id="humidity-box" style="font-size: 2rem; color: #1c87c9;">--</p>
+    </div>
+    <div style="text-align: center; border: 2px solid #18009c; padding: 10px; width: 30%; border-radius: 10px;">
+      <h3>Pressure</h3>
+      <p id="pressure-box" style="font-size: 2rem; color: #18009c;">--</p>
+    </div>
+  </div>
+  <!-- Grafici -->
   <div id="chart-temperature" class="container"></div>
   <div id="chart-humidity" class="container"></div>
   <div id="chart-pressure" class="container"></div>
 </body>
+
+<!--<body>
+  <h2>Derrick Plants Station</h2>
+  <div id="chart-temperature" class="container"></div>
+  <div id="chart-humidity" class="container"></div>
+  <div id="chart-pressure" class="container"></div>
+</body> -->
 <script>
+function updateBox(boxId, value, unit) {
+  document.getElementById(boxId).textContent = `${value.toFixed(2)}`;
+}
+
 var chartT = new Highcharts.Chart({
   chart:{ renderTo : 'chart-temperature' },
-  title: { text: 'BME280 Temperature' },
+  title: { text: 'Temperature' },
   series: [{
     showInLegend: false,
     data: []
@@ -63,11 +90,12 @@ setInterval(function ( ) {
       } else {
         chartT.series[0].addPoint([x, y], true, false, true);
       }
+	  updateBox("temperature-box", y, "°C");
     }
   };
   xhttp.open("GET", "/temperature", true);
   xhttp.send();
-}, 30000 ) ;
+}, 3000 ) ; <!--#prima era 30000, ovvero 30 secondi
 
 var chartH = new Highcharts.Chart({
   chart:{ renderTo:'chart-humidity' },
@@ -102,11 +130,12 @@ setInterval(function ( ) {
       } else {
         chartH.series[0].addPoint([x, y], true, false, true);
       }
+	  updateBox("humidity-box", y, "°C");
     }
   };
   xhttp.open("GET", "/humidity", true);
   xhttp.send();
-}, 30000 ) ;
+}, 3000 ) ;
 
 var chartP = new Highcharts.Chart({
   chart:{ renderTo:'chart-pressure' },
@@ -146,6 +175,6 @@ setInterval(function ( ) {
   };
   xhttp.open("GET", "/pressure", true);
   xhttp.send();
-}, 30000 ) ;
+}, 3000 ) ;
 </script>
 </html>
