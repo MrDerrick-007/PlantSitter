@@ -23,7 +23,7 @@
   <h3 align="center">PlantSitter Project<3</h3>
 
   <p align="center">
-    A project for automate the management of your beautiful plants based with ESP32 :smile:
+    A project for automate the management of your beautiful plants based on ESP32 :smile:
     <br />
     <br />
     <br />
