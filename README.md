@@ -68,7 +68,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The idea for this project stems from a personal need: to automatically manage (in the cheapest way) the plants I have at home during the summer when no one is available to take care of them. The goal behind this project is to remotely monitor the condition of the plants and ensure they are watered when needed. It will be possible to track various data, such as soil moisture and room temperature. When the system detects low soil moisture, a pump will be activated to water the target plant. 
+The idea for this project start from a personal need: to automatically manage (in the cheapest way) the plants I have at home during the summer when no one is available to take care of them. The goal behind this project is to remotely monitor the condition of the plants and ensure they are watered when needed. It will be possible to track various data, such as soil moisture and room temperature. When the system detects low soil moisture, a pump will be activated to water the target plant. 
 
 <!--### Built With
 
