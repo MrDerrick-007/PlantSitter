@@ -176,9 +176,6 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
 Project Link: [https://github.com/MrDerrick-007/PlantSitter/](https://github.com/MrDerrick-007/PlantSitter/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
