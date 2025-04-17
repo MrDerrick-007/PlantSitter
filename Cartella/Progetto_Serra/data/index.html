@@ -1,0 +1,396 @@
+
+<!DOCTYPE HTML><html>
+<!-- Rui Santos - Complete project details at https://RandomNerdTutorials.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software. -->
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <style>
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+
+        .plant-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .plant {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plant img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .humidity {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Trasparenza */
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+  </style>
+</head>
+<body>
+  
+  <!-- <h2>Derrick Plants Station</h2>
+  
+  <div class="plant-container">
+        <!-- Pianta 1 -->
+        <div class="plant">
+            <img src="plant1" alt="Pianta 1"> <!-- Sostituisci con il percorso della tua immagine -->
+            <div class="humidity" id="humidity-1">--%</div>
+        </div>
+
+        <!-- Pianta 2 -->
+        <div class="plant">
+            <img src="plant2" alt="Pianta 2"> <!-- Sostituisci con il percorso della tua immagine -->
+            <div class="humidity" id="humidity-2">--%</div>
+        </div>
+
+        <!-- Pianta 3 -->
+        <div class="plant">
+            <img src="plant3" alt="Pianta 3"> <!-- Sostituisci con il percorso della tua immagine -->
+            <div class="humidity" id="humidity-3">--%</div>
+        </div>
+
+        <!-- Pianta 4 -->
+        <div class="plant">
+            <img src="plant4" alt="Pianta 4"> <!-- Sostituisci con il percorso della tua immagine -->
+            <div class="humidity" id="humidity-4">--%</div>
+        </div>
+
+        <!-- Pianta 5 -->
+        <div class="plant">
+            <img src="plant5" alt="Pianta 5"> <!-- Sostituisci con il percorso della tua immagine -->
+            <div class="humidity" id="humidity-5">--%</div>
+        </div>
+
+        <!-- Pianta 6 -->
+        <div class="plant">
+            <img src="plant6" alt="Pianta 6"> <!-- Sostituisci con il percorso della tua immagine -->
+            <div class="humidity" id="humidity-6">--%</div>
+        </div>
+    </div>
+	
+	
+	<!-- Aggiungi altre piante copiando il codice seguente: 
+    <div class="plant">
+        <img src="plantX.jpg" alt="Pianta X"> <!-- Cambia X con il numero della pianta -->
+       <!-- <div class="humidity">XX%</div>
+    </div> -->
+	
+	<!-- Riquadri con i valori -->
+  <div style="display: flex; justify-content: space-around; margin: 20px;">
+    <div style="text-align: center; border: 2px solid #059e8a; padding: 10px; width: 30%; border-radius: 10px;">
+      <h3>Temperature</h3>
+      <p id="temperature-box" style="font-size: 2rem; color: #059e8a;">--</p>
+    </div>
+    <div style="text-align: center; border: 2px solid #1c87c9; padding: 10px; width: 30%; border-radius: 10px;">
+      <h3>Humidity</h3>
+      <p id="humidity-box" style="font-size: 2rem; color: #1c87c9;">--</p>
+    </div>
+    <div style="text-align: center; border: 2px solid #18009c; padding: 10px; width: 30%; border-radius: 10px;">
+      <h3>Pressure</h3>
+      <p id="pressure-box" style="font-size: 2rem; color: #18009c;">--</p>
+    </div>
+  </div>
+  <!-- Grafici --> 
+  <div id="chart-temperature" class="container"></div>
+  <div id="chart-humidity" class="container"></div>
+  <div id="chart-pressure" class="container"></div> 
+
+   
+</body>
+
+<script>
+function updateBox(boxId, value, unit) {
+  document.getElementById(boxId).textContent = `${value.toFixed(2)}`;
+}
+
+function updateCircle(circleId, value) {
+  document.getElementById(circleId).textContent = `${value.toFixed(2)}`;
+}
+
+<!-- <!-- var chartT = new Highcharts.Chart({ -->
+  <!-- chart:{ renderTo : 'chart-temperature' }, -->
+  <!-- title: { text: 'Temperature' }, -->
+  <!-- series: [{ -->
+    <!-- showInLegend: false, -->
+    <!-- data: [] -->
+  <!-- }], -->
+  <!-- plotOptions: { -->
+    <!-- line: { animation: false, -->
+      <!-- dataLabels: { enabled: true } -->
+    <!-- }, -->
+    <!-- series: { color: '#059e8a' } -->
+  <!-- }, -->
+  <!-- xAxis: { type: 'datetime', -->
+    <!-- dateTimeLabelFormats: { second: '%H:%M:%S' } -->
+  <!-- }, -->
+  <!-- yAxis: { -->
+    <!-- title: { text: 'Temperature (Celsius)' } -->
+    <!-- //title: { text: 'Temperature (Fahrenheit)' } -->
+  <!-- }, -->
+  <!-- credits: { enabled: false } -->
+<!-- }); --> -->
+
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartT.series[0].data.length > 40) { -->
+        <!-- chartT.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartT.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("temperature-box", y, "°C");
+    }
+  };
+  xhttp.open("GET", "/temperature", true);
+  xhttp.send();
+}, 3000 ) ; <!--#prima era 30000, ovvero 30 secondi
+
+
+
+<!-- var chartH = new Highcharts.Chart({ -->
+  <!-- chart:{ renderTo:'chart-humidity' }, -->
+  <!-- title: { text: 'BME280 Humidity' }, -->
+  <!-- series: [{ -->
+    <!-- showInLegend: false, -->
+    <!-- data: [] -->
+  <!-- }], -->
+  <!-- plotOptions: { -->
+    <!-- line: { animation: false, -->
+      <!-- dataLabels: { enabled: true } -->
+    <!-- } -->
+  <!-- }, -->
+  <!-- xAxis: { -->
+    <!-- type: 'datetime', -->
+    <!-- dateTimeLabelFormats: { second: '%H:%M:%S' } -->
+  <!-- }, -->
+  <!-- yAxis: { -->
+    <!-- title: { text: 'Humidity (%)' } -->
+  <!-- }, -->
+  <!-- credits: { enabled: false } -->
+<!-- }); -->
+
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartH.series[0].data.length > 40) { -->
+        <!-- chartH.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartH.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("humidity-box", y, "°C");
+    }
+  };
+  xhttp.open("GET", "/humidity", true);
+  xhttp.send();
+}, 3400 ) ;
+
+
+
+<!-- var chartP = new Highcharts.Chart({ -->
+  <!-- chart:{ renderTo:'chart-pressure' }, -->
+  <!-- title: { text: 'BME280 Pressure' }, -->
+  <!-- series: [{ -->
+    <!-- showInLegend: false, -->
+    <!-- data: [] -->
+  <!-- }], -->
+  <!-- plotOptions: { -->
+    <!-- line: { animation: false, -->
+      <!-- dataLabels: { enabled: true } -->
+    <!-- }, -->
+    <!-- series: { color: '#18009c' } -->
+  <!-- }, -->
+  <!-- xAxis: { -->
+    <!-- type: 'datetime', -->
+    <!-- dateTimeLabelFormats: { second: '%H:%M:%S' } -->
+  <!-- }, -->
+  <!-- yAxis: { -->
+    <!-- title: { text: 'Pressure (hPa)' } -->
+  <!-- }, -->
+  <!-- credits: { enabled: false } -->
+<!-- }); -->
+
+
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartP.series[0].data.length > 40) { -->
+        <!-- chartP.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartP.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("pressure-box", y , "°C");
+	  updateCircle("humidity-1", y);
+    }
+  };
+  xhttp.open("GET", "/a", true);
+  xhttp.send();
+}, 3010 ) ;
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartP.series[0].data.length > 40) { -->
+        <!-- chartP.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartP.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("pressure-box", y , "°C");
+	  updateCircle("humidity-2", y);
+    }
+  };
+  xhttp.open("GET", "/b", true);
+  xhttp.send();
+}, 3000 ) ;
+
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartP.series[0].data.length > 40) { -->
+        <!-- chartP.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartP.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("pressure-box", y , "°C");
+	  updateCircle("humidity-3", y);
+    }
+  };
+  xhttp.open("GET", "/c", true);
+  xhttp.send();
+}, 3000 ) ;
+
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartP.series[0].data.length > 40) { -->
+        <!-- chartP.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartP.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("pressure-box", y , "°C");
+	  updateCircle("humidity-4", y);
+    }
+  };
+  xhttp.open("GET", "/pianta4", true);
+  xhttp.send();
+}, 2000 ) ;
+
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartP.series[0].data.length > 40) { -->
+        <!-- chartP.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartP.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("pressure-box", y , "°C");
+	  updateCircle("humidity-5", y);
+    }
+  };
+  xhttp.open("GET", "/pianta5", true);
+  xhttp.send();
+}, 2500 ) ;
+
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      <!-- if(chartP.series[0].data.length > 40) { -->
+        <!-- chartP.series[0].addPoint([x, y], true, true, true); -->
+      <!-- } else { -->
+        <!-- chartP.series[0].addPoint([x, y], true, false, true); -->
+      <!-- } -->
+	  updateBox("pressure-box", y , "°C");
+	  updateCircle("humidity-6", y);
+    }
+  };
+  xhttp.open("GET", "/pianta6", true);
+  xhttp.send();
+}, 3500 ) ;
+
+
+
+
+</script>
+</html>
